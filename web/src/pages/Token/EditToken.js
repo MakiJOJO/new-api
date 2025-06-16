@@ -100,7 +100,7 @@ const EditToken = (props) => {
     let res = await API.get(`/api/user/models`);
     const { success, message, data } = res.data;
     if (success) {
-      let localModelOptions = data.map((model) => ({
+      let localModelOptions = data?.map((model) => ({
         label: model,
         value: model,
       }));

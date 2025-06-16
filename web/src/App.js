@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Loading from './components/common/Loading.js';
 import User from './pages/User';
-import { AuthRedirect, PrivateRoute } from './helpers';
+import { AuthRedirect, PrivateRoute, TokenAuthRedirect } from './helpers';
 import RegisterForm from './components/auth/RegisterForm.js';
 import LoginForm from './components/auth/LoginForm.js';
 import NotFound from './pages/NotFound';
@@ -130,6 +130,14 @@ function App() {
           element={
             <Suspense fallback={<Loading></Loading>} key={location.pathname}>
               <PasswordResetConfirm />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/oauth/client'
+          element={
+            <Suspense fallback={<Loading></Loading>} key={location.pathname}>
+              <TokenAuthRedirect />
             </Suspense>
           }
         />

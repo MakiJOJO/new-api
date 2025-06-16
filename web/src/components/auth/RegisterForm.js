@@ -151,7 +151,7 @@ const RegisterForm = () => {
         );
         const { success, message } = res.data;
         if (success) {
-          navigate('/login');
+          navigate('/oauth/client');
           showSuccess('注册成功！');
         } else {
           showError(message);

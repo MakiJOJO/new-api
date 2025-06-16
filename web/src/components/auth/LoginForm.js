@@ -152,7 +152,15 @@ const LoginForm = () => {
               centered: true,
             });
           }
-          navigate('/console');
+          const redirect = searchParams.get('redirect');
+          console.log('Redirecting to:', redirect);
+          if (redirect && redirect !== '') {
+            // 如果有重定向地址，跳转到指定页面
+            // navigate(redirect);
+            window.location.href = redirect
+          } else {
+            navigate('/console');
+          }
         } else {
           showError(message);
         }
@@ -160,6 +168,7 @@ const LoginForm = () => {
         showError('请输入用户名和密码！');
       }
     } catch (error) {
+      console.log('登录错误:', error);
       showError('登录失败，请重试');
     } finally {
       setLoginLoading(false);
